@@ -8,7 +8,8 @@ services:
     hostname: samba
     image: elswork/samba
     volumes:
-      - /media/usbdrive:/share/folder/usbdrive
+#      - /media/usbdrive:/share/folder/usbdrive
+      - /media/usbdrive:/share/usb32gb
     ports:
       - 137:137/udp
       - 138:138/udp
@@ -16,4 +17,5 @@ services:
       - 445:445
       - 445:445/udp
     restart: always
-    command: -u "aurick:aurick" -s "usbdrive:/share/folder:rw:aurick"
+#    command: -u "aurick:aurick" -s "usbdrive:/share/folder:rw:aurick"
+    command: -u "aurick:aurick" -s "share:/share:rw:aurick"

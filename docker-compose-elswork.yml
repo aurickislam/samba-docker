@@ -4,12 +4,9 @@ version: '3.7'
 
 services:
   samba:
-    build:
-      context: .
-      dockerfile: Dockerfile
     container_name: samba
     hostname: samba
-    image: samba-docker
+    image: elswork/samba
     volumes:
 #      - /media/usbdrive:/share/folder/usbdrive
       - /media/usbdrive:/share/usb32gb

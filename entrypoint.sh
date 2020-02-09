@@ -28,9 +28,19 @@ disable spoolss = yes
 guest account = nobody
 max log size = 50
 map to guest = bad user
-socket options = TCP_NODELAY SO_RCVBUF=8192 SO_SNDBUF=8192
+#socket options = TCP_NODELAY SO_RCVBUF=8192 SO_SNDBUF=8192
+socket options = TCP_NODELAY IPTOS_LOWDELAY
 local master = no
 dns proxy = no
+
+#read raw = Yes
+#write raw = Yes
+#socket options = TCP_NODELAY IPTOS_LOWDELAY SO_RCVBUF=131072 SO_SNDBUF=131072
+#min receivefile size = 16384
+#use sendfile = true
+#aio read size = 16384
+#aio write size = 16384
+
 EOT
 
   while getopts ":u:s:h" opt; do

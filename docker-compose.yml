@@ -1,18 +1,17 @@
 version: '3.7'
 
-# docker run -it -p 137:137/udp -p 138:138/udp -p 139:139 -p 445:445 -p 445:445/udp --hostname 'filer' -v /media/usbdrive:/share/folder/usbdrive elswork/samba:armv7l -u "aurick:aurick" -s "usbdrive:/share/folder:rw:aurick"
-
 services:
   samba:
     build:
       context: .
       dockerfile: Dockerfile
+    image: samba-docker
     container_name: samba
     hostname: samba
-    image: samba-docker
     volumes:
-#      - /media/usbdrive:/share/folder/usbdrive
-      - /media/usbdrive:/share/usb32gb
+      - /media/usb1:/share/usb1
+      - /media/usb2:/share/usb2
+      - /media/usb3:/share/usb3
     ports:
       - 137:137/udp
       - 138:138/udp
@@ -20,5 +19,4 @@ services:
       - 445:445
       - 445:445/udp
     restart: always
-#    command: -u "aurick:aurick" -s "usbdrive:/share/folder:rw:aurick"
     command: -u "aurick:aurick" -s "share:/share:rw:aurick"

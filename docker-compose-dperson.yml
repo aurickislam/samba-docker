@@ -5,6 +5,7 @@ version: '3.7'
 services:
   samba:
     image: dperson/samba
+    hostname: samba
     container_name: samba
     restart: unless-stopped
     stdin_open: true
@@ -42,7 +43,9 @@ services:
       # [admins] default: 'none' or list of admin users;
       # [writelist] default: 'none' or list of users that can write to read-only share;
       # [comment] default: 'none' or description of share
-      SHARE: "usbdrive;/mnt;yes;no;no;aurick;'none';'none';'my awesome share"
+      SHARE: "usb1;/media/usb1;yes;no;no;aurick;'none';'none';'my awesome share"
+      SHARE1: "usb2;/media/usb2;yes;no;no;aurick;'none';'none';'my awesome share"
+      SHARE2: "usb3;/media/usb3;yes;no;no;aurick;'none';'none';'my awesome share"
 
       # workgroup/domain name for share default: "MYGROUP"
       WORKGROUP: "WORKGROUP"
@@ -62,4 +65,6 @@ services:
     tmpfs:
       - /tmp
     volumes:
-      - /media/usbdrive:/mnt:z # :z allows share to be used by multiple containers
+      - /media/usb1:/media/usb1:z # :z allows share to be used by multiple containers
+      - /media/usb2:/media/usb2:z
+      - /media/usb3:/media/usb3:z

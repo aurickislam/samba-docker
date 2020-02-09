@@ -4,12 +4,14 @@ version: '3.7'
 
 services:
   samba:
+    image: elswork/samba
     container_name: samba
     hostname: samba
-    image: elswork/samba
     volumes:
 #      - /media/usbdrive:/share/folder/usbdrive
-      - /media/usbdrive:/share/usb32gb
+      - /media/usb1:/share/usb1
+      - /media/usb2:/share/usb2
+      - /media/usb3:/share/usb3
     ports:
       - 137:137/udp
       - 138:138/udp

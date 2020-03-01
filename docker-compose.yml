@@ -11,7 +11,7 @@ services:
     volumes:
       - /media/usb1:/share/usb1
       - /media/usb2:/share/usb2
-      - /media/usb3:/share/usb3
+#      - /media/usb3:/share/usb3
     ports:
       - 137:137/udp
       - 138:138/udp

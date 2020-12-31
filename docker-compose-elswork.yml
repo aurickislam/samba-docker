@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 # docker run -it -p 137:137/udp -p 138:138/udp -p 139:139 -p 445:445 -p 445:445/udp --hostname 'filer' -v /media/usbdrive:/share/folder/usbdrive elswork/samba:armv7l -u "aurick:aurick" -s "usbdrive:/share/folder:rw:aurick"
 
@@ -9,9 +9,8 @@ services:
     hostname: samba
     volumes:
 #      - /media/usbdrive:/share/folder/usbdrive
-      - /media/usb1:/share/usb1
-      - /media/usb2:/share/usb2
-      - /media/usb3:/share/usb3
+      - /mnt/usb1:/share/usb1
+      - /mnt/usb2:/share/usb2
     ports:
       - 137:137/udp
       - 138:138/udp
